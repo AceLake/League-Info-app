@@ -7,7 +7,7 @@ namespace League_Info_app.Services
     {
         Task<List<SummonerModel>> GetSummonerByRsoPUUID(string SummonerID);
         Task<List<SummonerModel>> GetSummonerByAccountID(string AccountID);
-        Task<List<SummonerModel>> GetSummonerByName(string SummonerName);
+        Task<SummonerModel> GetSummonerByName(string SummonerName);
         Task<List<SummonerModel>> GetSummonerByPUUID(string SummonerID);
         Task<List<SummonerModel>> GetSummonerByToken(string Bearertoken);
         Task<List<SummonerModel>> GetSummonerBySummonerID(string SummonerID);
