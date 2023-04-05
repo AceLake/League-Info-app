@@ -1,7 +1,13 @@
+using League_Info_app.Services;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<ILeagueApiService, LeagueApiService>();
 
 var app = builder.Build();
 

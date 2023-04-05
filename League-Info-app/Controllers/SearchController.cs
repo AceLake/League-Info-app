@@ -6,12 +6,13 @@ namespace League_Info_app.Controllers
 {
     public class SearchController : Controller
     {
-        private ILeagueApiService _leagueApiService = new LeagueApiService();
+        //private ILeagueApiService _leagueApiService = new LeagueApiService();
+        private ILeagueApiService _leagueApiService;
 
-        //public SearchController(ILeagueApiService leagueApiService)
-        //{
-        //    _leagueApiService = leagueApiService;
-        //}
+        public SearchController(ILeagueApiService leagueApiService)
+        {
+            _leagueApiService = leagueApiService;
+        }
 
         public async Task<IActionResult> Index()
         {
