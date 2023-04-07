@@ -14,11 +14,13 @@ namespace League_Info_app.Controllers
             _leagueApiService = leagueApiService;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            SummonerModel summoner = new SummonerModel();
-            summoner = await _leagueApiService.GetSummonerByName("WhiteWolfyness");
-
+            return View();
+        }
+        public async Task<IActionResult> ProssesSearch(SummonerModel summonerName)
+        {
+            SummonerModel summoner = await _leagueApiService.GetSummonerByName(summonerName.name);
             return View(summoner);
         }
     }
