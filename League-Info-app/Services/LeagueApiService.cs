@@ -24,7 +24,7 @@ namespace League_Info_app.Services
         public async Task<SummonerModel> GetSummonerByName(string SummonerName)
         {
             // The first line is building the Url of the API and using the SummonerName and apiKey parameters
-            var url = string.Format("/tft/summoner/v1/summoners/by-name/{0}?api_key={1}", SummonerName, apiKey);
+            var url = string.Format("/lol/summoner/v4/summoners/by-name/{0}?api_key={1}", SummonerName, apiKey);
             var result = new SummonerModel();
 
             // Next, we are making an API call using the GetAsync method that sends a GET request to the specified Uri as an asynchronous operation.
