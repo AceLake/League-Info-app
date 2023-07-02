@@ -22,7 +22,7 @@ namespace League_Info_app.Controllers
         {
             SummonerModel summoner = await _leagueApiService.GetSummonerByName(summonerName.name);
             ChampionMasteryDto mastery = await _leagueApiService.GetMasteryByID(summoner.accountId);
-            return View(summoner);
+            return View(summoner, mastery);
         }
     }
 }
