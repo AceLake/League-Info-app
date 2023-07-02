@@ -6,7 +6,7 @@ namespace League_Info_app.Services
     public class LeagueApiService : ILeagueApiService
     {
         private static readonly HttpClient client;
-        private static string apiKey = "RGAPI-aca0bd20-63a8-4cba-b885-c9aa97d3dcb2";
+        private static string apiKey = "RGAPI-1cab6e2d-60a1-4c9d-ae2b-3b12bffa8b81";
 
         static LeagueApiService()
         {
@@ -65,6 +65,32 @@ namespace League_Info_app.Services
         public Task<List<SummonerModel>> GetSummonerByToken(string Bearertoken)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<List<SummonerModel>> GetMasteryByID(string ID)
+        {
+            // The first line is building the Url of the API and using the SummonerName and apiKey parameters
+            var url = string.Format("/lol/champion-mastery/v4/champion-masteries/by-summoner/{0}/top?api_key={1}", ID, apiKey);
+            var result = new SummonerModel();
+
+            // Next, we are making an API call using the GetAsync method that sends a GET request to the specified Uri as an asynchronous operation.
+            // The method returns System.Net.Http.HttpResponseMessage object that represents an HTTP response message including the status code and data.
+            var response = await client.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                // Next, we are calling ReadAsStringAsync method that serializes the HTTP content to a string
+                var stringResponse = await response.Content.ReadAsStringAsync();
+
+                // Finally, we are using JsonSerializer to Deserialize the JSON response string into a List of HolidayModel objects.
+                result = JsonSerializer.Deserialize<ChampionMasteryDto>(stringResponse,
+                    new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+            }
+            else
+            {
+                throw new HttpRequestException(response.ReasonPhrase);
+            }
+
+            return result;
         }
     }
 }

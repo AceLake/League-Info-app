@@ -21,6 +21,7 @@ namespace League_Info_app.Controllers
         public async Task<IActionResult> ProssesSearch(SummonerModel summonerName)
         {
             SummonerModel summoner = await _leagueApiService.GetSummonerByName(summonerName.name);
+            ChampionMasteryDto mastery = await _leagueApiService.GetMasteryByID(summoner.accountId);
             return View(summoner);
         }
     }
