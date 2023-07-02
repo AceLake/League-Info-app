@@ -6,7 +6,7 @@ namespace League_Info_app.Services
     public class LeagueApiService : ILeagueApiService
     {
         private static readonly HttpClient client;
-        private static string apiKey = "RGAPI-1cab6e2d-60a1-4c9d-ae2b-3b12bffa8b81";
+        private static string apiKey = "";
 
         static LeagueApiService()
         {
