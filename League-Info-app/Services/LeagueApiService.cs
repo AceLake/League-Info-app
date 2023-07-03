@@ -67,7 +67,7 @@ namespace League_Info_app.Services
             throw new NotImplementedException();
         }
 
-        public async Task<List<SummonerModel>> GetMasteryByID(string ID)
+        public async Task<List<ChampionMasteryDto>> GetMasteryByID(string ID)
         {
             // The first line is building the Url of the API and using the SummonerName and apiKey parameters
             var url = string.Format("/lol/champion-mastery/v4/champion-masteries/by-summoner/{0}/top?api_key={1}", ID, apiKey);
